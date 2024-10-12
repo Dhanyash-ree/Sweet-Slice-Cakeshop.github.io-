@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetSlice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="cart.js"></script>
+    
+</head>
+<style>
+    .products .box-container {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .products .box-container .box {
+    position: relative;
+    background: #f3f3f3;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.7);
+    border:0.1rem solid rgba(0,0,0,0.7);
+  }
+
+
+
+
+.products .box-container .box .icons {
+    position: absolute;
+    top: 10px;  /* Adjust the top position as needed */
+    right: 10px; /* Fix it in the top-right corner of the box */
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: transparent; /* No background */
+}
+
+/* Remove hover effect that slides the icons */
+.products .box-container  .icons {
+    /* top:  50px; */
+   padding-top: 180px;
+   padding-right: 190px; /* Keep the same top value to prevent it from moving */
+}
+
+/* Adjust the icon's individual style */
+.products .box-container .box .icons a {
+    font-size: 2rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    background: #fff; /* White background for the icon */
+    color: #666; /* Color for the cart icon */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Optional shadow */
+    border-radius: 50%; /* Makes the icon circular */
+}
+
+/* Change the cart icon color on hover */
+.products .box-container .box .icons a:hover {
+    background: var(--brown); /* Change to brown on hover */
+    color: #fff; /* White icon color on hover */
+}
+
+
+
+  .products .box-container .box .img {
+    height:15rem;
+    width:27rem;
+    overflow: hidden;
+  }
+
+  .products .box-container .box .img img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+  }
+
+  .products .box-container .box .content {
+    padding: 1.5rem;
+  }
+
+  .products .box-container .box .content h3 {
+    font-size: 2rem;
+    color: #222;
+  }
+
+  .products .box-container .box .content .price {
+    font-size: 2rem;
+    color: #222;
+    padding: 1rem 0;
+  }
+
+  .products .box-container .box .content .stars i {
+    font-size: 1.7rem;
+    color: var(--brown);
+  }
+ button{
+    border: 2px solid brown ;
+    border-radius: 15%;
+    background-color:rgba(173, 26, 26, 0.466);
+    position: relative;
+    z-index: 1000px;
+    cursor: pointer;
+
+ }
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8b400;
+    padding: 20px;
+    text-align: center;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.box img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.cart {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.cart.visible {
+    display: block;
+}
+
+#cart {
+    cursor: pointer;
+}
+.box-container{
+     display: flex;
+     flex-direction: row;
+}
+
+
+.box-container {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+  }
+
+   .box-container .box {
+    position: relative;
+    background: #f3f3f3;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.7);
+    border:0.1rem solid rgba(0,0,0,0.7);
+  }
+
+</style>
+<body>
+    <header class="header">
+        <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> SweetSlice</a>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="#">Shop</a>
+            <a href="Aboutus.html">About Us</a>
+            <a href="#">Review</a>
+            <a href="#">Blog</a>
+            <a href="contactus.html">Contact</a>
+
+
+        </nav>
+
+
+
+
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="cart">
+                <span id="cart-count">🛒 <span id="item-count">0</span></span>
+            </div>
+        
+            <div id="login-btn" class="fas fa-user"></div>
+           
+            <button class="login" style="color: white ; background-color:#833517;">Login/Sign up</button>
+        </div>
+        
+
+    </header>
+    <!--  section  -->
+
+
+
+
+
+    <!-- home -->
+
+
+
+
+    <section class="home" id="home">
+        <div class="slides-container">
+            <div class="catogory">
+
+                <nav class="categ">
+
+                    <select id="option">
+                        <option value="cakes">Cakes</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+
+
+                    </select>
+                    <select id="option">
+                        <option value="Birthday Cakes">Birthday Cakes</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=" "></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+
+
+                    </select>
+                    <select id="option">
+                        <option value="Anniversary Cakes">Anniversary Cakes</option>
+                        <option value="Trending">By Flavour</option>
+                        <option value="PinataCakes">Birthday Cakes</option>
+                        <option value=" SurpriseCakes">Anniversary cakes</option>
+                        <option value="GourmetCakes">Occas</option>
+                        <option value="DripCakes"></option>
+                        <option value="PullMe Up Cakes"></option>
+                        <option value="BombCakes"></option>
+
+
+                    </select>
+                    <select id="option">
+                        <option value="Occasion">Occasion</option>
+                        <option value="Trending">By Flavour</option>
+                        <option value="PinataCakes">Birthday Cakes</option>
+                        <option value=" SurpriseCakes">Anniversary cakes</option>
+                        <option value="GourmetCakes">Occas</option>
+                        <option value="DripCakes"></option>
+                        <option value="PullMe Up Cakes"></option>
+                        <option value="BombCakes"></option>
+
+
+                    </select>
+                    <select id="option">
+                        <option value="By Relationship">By Relationship</option>
+                        <option value="Trending">By Flavour</option>
+                        <option value="PinataCakes">Birthday Cakes</option>
+                        <option value=" SurpriseCakes">Anniversary cakes</option>
+                        <option value="GourmetCakes">Occas</option>
+                        <option value="DripCakes"></option>
+                        <option value="PullMe Up Cakes"></option>
+                        <option value="BombCakes"></option>
+
+
+                    </select>
+                    <select id="option">
+                        <option value="By Flavour">By Flavour</option>
+                        <option value="Trending">By Flavour</option>
+                        <option value="PinataCakes">Birthday Cakes</option>
+                        <option value=" SurpriseCakes">Anniversary cakes</option>
+                        <option value="GourmetCakes">Occas</option>
+                        <option value="DripCakes"></option>
+                        <option value="PullMe Up Cakes"></option>
+                        <option value="BombCakes"></option>
+
+
+                    </select>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="products">
+        <h1 class="title"><span>Birthday Cakes</span></h1>
+        <div class="box-container">
+            <!-- Example of a Cake Product -->
+            <div class="box" data-product-id="1" data-product-name="Berries Citrus Cake" data-product-price="1359" data-product-img="Assets/Images/Bd1.jpg">
+                <div class="icons">
+                    <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                </div>
+                <div class="img">
+                    <img src="Assets/Images/Bd1.jpg" alt="Berries Citrus Fruits Cake">
+                </div>
+                <div class="content">
+                    <h3>Berries Citrus Fruits Cake</h3>
+                    <div class="price">₹ 1359</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="box" data-product-id="2" data-product-name="Strawberry Nutella Cake" data-product-price="1449" data-product-img="Assets/Images/Bd2.jpg">
+                <div class="icons">
+                    <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                </div>
+                <div class="img">
+                    <img src="Assets/Images/Bd2.jpg" alt="Strawberry Nutella Cake">
+                </div>
+                <div class="content">
+                    <h3>Strawberry Nutella Cake</h3>
+                    <div class="price">₹ 1449</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="box" data-product-id="3" data-product-name="Classic Black Forest Cake"
+                data-product-price="₹ 549" data-product-img="Assets/Images/Bd4.jpg">
+                <div class="icons">
+                    <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                </div>
+                <div class="img">
+                    <img src="Assets/Images/Bd4.jpg" alt="Classic Black Forest Cake">
+                </div>
+                <div class="content">
+                    <h3>Classic Black Forest Cake</h3>
+                    <div class="price">₹ 549</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+           
+                    <div class="box" data-product-id="4" data-product-name="
+                    Rose N Butterfly Designer Cake"
+                        data-product-price="1449" data-product-img="Assets/Images/Bd3.jpg">
+                        <div class="icons">
+                            <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                        </div>
+                        <div class="img">
+                            <img src="Assets/Images/Bd3.jpg" alt="
+                            Rose N Butterfly Designer Cake">
+                        </div>
+                        <div class="content">
+                            <h3>
+                                Rose N Butterfly Designer Cake</h3>
+                            <div class="price">₹ 1449</div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="box" data-product-id="5" data-product-name="Rosette Chocolate Cake"
+                        data-product-price="₹ 699" data-product-img="Assets/Images/Bd5.jpg">
+                        <div class="icons">
+                            <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                        </div>
+                        <div class="img">
+                            <img src="Assets/Images/Bd5.jpg" alt="Rosette Chocolate Cake">
+                        </div>
+                        <div class="content">
+                            <h3>Rosette Chocolate Cake</h3>
+                            <div class="price">₹ 699</div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="box" data-product-id="6" data-product-name="Roll Up Chocolate Truffle Cake"
+                        data-product-price="₹ 799" data-product-img="Assets/Images/Bd6.jpg">
+                        <div class="icons"> 
+                            <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                        </div>
+                        <div class="img">
+                            <img src="Assets/Images/Bd6.jpg" alt="Roll Up Chocolate Truffle Cake">
+                        </div>
+                        <div class="content">
+                            <h3>Roll Up Chocolate Truffle Cake</h3>
+                            <div class="price">₹ 799</div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="box" data-product-id="7" data-product-name="Whipped Cream Pineapple Cake"
+                    data-product-price="₹ 799" data-product-img="Assets/Images/Bd7.jpg">
+                    <div class="icons">
+                        <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                    </div>
+                    <div class="img">
+                        <img src="Assets/Images/Bd7.jpg" alt="Whipped Cream Pineapple Cake">
+                    </div>
+                    <div class="content">
+                        <h3>Whipped Pineapple Cake</h3>
+                        <div class="price">₹ 799</div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="box" data-product-id="8" data-product-name="Oreo Chocolate Cake"
+                data-product-price="₹ 799" data-product-img="Assets/Images/Bd8.jpg">
+                <div class="icons">
+                    <!-- <a href="#" class="fas fa-shopping-cart add-to-cart">Add to Cart</a> -->
+                </div>
+                <div class="img">
+                    <img src="Assets/Images/Bd8.jpg" alt="Oreo Chocolate Cake">
+                </div>
+                <div class="content">
+                    <h3>Oreo Chocolate Cake</h3>
+                    <div class="price">₹ 799</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+
+                </div>
+              
+
+
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Home</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>Shop</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>About</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Review</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>Blog</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>Contact</a>
+            </div>
+
+            <div class="box">
+                <h3>extra links</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i> my order </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> my favorite </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> my wishlist </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> my account </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> terms or use </a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+                <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+                <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
+            </div>
+
+            <div class="box">
+                <h3>newsletter</h3>
+                <p>subscribe for latest update</p>
+                <form action="">
+                    <input type="email" placeholder="enter your email address">
+                    <input type="submit" value="subscribe" class="btn">
+                </form>
+                <img decoding="async" src="img/payment.png" class="payments" alt="">
+            </div>
+        </div>
+    </section>
+    
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: ₹<span id="total-price">0</span></p>
+        <button id="checkout">Checkout</button>
+    </div>
+
+
+    <script src="cart.js"></script>
+
+</body>
+</html>
